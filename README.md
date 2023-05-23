@@ -1,7 +1,8 @@
 # Merge fastq files
 
 ## Usage
-Merge multiple fastq.gz or fastq files and check for file validation after merging.
+1. Modify path to fastq_corrupt_check.ph in script merge_fastq_for_EGA_check_corrupt.sh
+2. Merge multiple fastq.gz or fastq files by:
 
 ```
 bash merge_fastq_for_EGA_check_corrupt.sh <$INPATH> <$OUTPATH> <$FILENAME>
