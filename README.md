@@ -10,20 +10,23 @@ bash merge_fastq_for_EGA_check_corrupt.sh <$INPATH> <$OUTPATH> <$FILENAME>
 ## fastq_corrupt_check.pl
 Check a FASTQ file to see if it is corrupt
 
-# Usage: 
+### Usage: 
 fastq_corrupt_check can accept any number of fastq files, and will check all files mentioned after `perl fastq_corrupt_check.pl`
+
 ```
 perl fastq_corrupt_check.pl file1 file2
 ```
+
 where each file has `fastq` or `fq` at the end, with no compression, `gz` compression, or `bz2` compression.
-````
+
+```
 perl fastq_corrupt_check.pl file.fastq.bz2 file0.fq.gz file1.fastq
 ```
 
 
-## fastq_corrupt_check.pl logic
+### fastq_corrupt_check.pl logic
 
-`fastq_corrupt_check.pl` checks to ensure that Fastq files are not corrupted.  
+fastq_corrupt_check checks to ensure that Fastq files are not corrupted.  
 Each entry in a Fastq file has 4 lines.  The fastq file should have the following properties:
 
     * The 2nd line should only consist of A, C, G, T, and/or N
