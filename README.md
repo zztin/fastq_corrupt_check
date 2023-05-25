@@ -1,15 +1,16 @@
 # Merge fastq files
 
 ## Usage
-1. Modify path to fastq_corrupt_check.ph in script merge_fastq_for_EGA_check_corrupt.sh
-2. Merge multiple fastq.gz or fastq files by:
+Nanopore sequencing run output consist of `fastq_pass` or `pass` folder which contains multiple files. This script merge all fastq or fastq.gz files in a given folder, and create a fastq.gz file of desinated name. The desinated filename should be give in the $FILENAME variable without suffix. For CyclomicsSeq EGA upload, please use SampleName_RunName as desinated filename.
+
+Merge multiple fastq.gz or fastq files by:
 
 ```
 bash merge_fastq_for_EGA_check_corrupt.sh <$INPATH> <$OUTPATH> <$FILENAME>
 ```
 
 ## fastq_corrupt_check.pl
-Check a FASTQ file to see if it is corrupt
+In this repository, it also contains a perl script to check if fastq files are corrupted. This check if performed at the end of the merging. The script is called in the bash script above and do not need to be perform separately. 
 
 ### Usage: 
 fastq_corrupt_check can accept any number of fastq files, and will check all files mentioned after `perl fastq_corrupt_check.pl`
