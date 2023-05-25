@@ -3,7 +3,8 @@
 FOLDER=$1
 OUTPUT=$2
 RUNNAME=$3
-PERL_SCRIPT="/hpc/compgen/users/lchen/00_utils/fastq_corrupt_check/fastq_corrupt_check.pl"
+parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+FASTQ_CORRUPT_CHECK=$parent_path/fastq_corrupt_check.pl
 
 
 # Start measuring execution time
@@ -29,7 +30,7 @@ fi
 # Concatenate fastq.gz files using cat
 if [ ${#GZ_FILES[@]} -gt 0 ]; then
     cat "${GZ_FILES[@]}" > "$OUTPUT"/"$RUNNAME".fastq.gz
-    perl "$PERL_SCRIPT" "$OUTPUT/$RUNNAME.fastq.gz"
+    perl "$FASTQ_CORRUPT_CHECK" "$OUTPUT/$RUNNAME.fastq.gz"
     echo "Concatenated fastq.gz files into $OUTPUT/$RUNNAME.fastq.gz"
 fi
 
@@ -43,7 +44,7 @@ if [ ${#FASTQ_FILES[@]} -gt 0 ]; then
     gzipped_files=("$FOLDER"/*.fastq.gz)
     if [ ${#gzipped_files[@]} -gt 0 ]; then
         cat "${gzipped_files[@]}" >> "$OUTPUT"/"$RUNNAME".fastq.gz
-        perl "$PERL_SCRIPT" "$OUTPUT/$RUNNAME.fastq.gz"
+        perl "$FASTQ_CORRUPT_CHECK" "$OUTPUT/$RUNNAME.fastq.gz"
         echo "Concatenated gzipped fastq files into $OUTPUT/$RUNNAME.fastq.gz"
     fi
 fi
