@@ -3,8 +3,8 @@
 FOLDER=$1
 OUTPUT=$2
 RUNNAME=$3
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-FASTQ_CORRUPT_CHECK=${parent_path}/fastq_corrupt_check.pl
+SCRIPT_DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+FASTQ_CORRUPT_CHECK=${SCRIPT_DIR}/fastq_corrupt_check.pl
 
 
 # Start measuring execution time
